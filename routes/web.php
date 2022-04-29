@@ -19,10 +19,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');  //ホーム画面表示
 
-Route::get('/mypage/{id}' , 'MypageController@show')->name('mypage');
+Route::get('/mypage/{user_id}' , 'ProfileController@show')->name('mypage.show');  //マイページ表示
+Route::get('/mypage/{user_id}/edit' , 'ProfileController@edit')->name('profile.edit');  //マイページ編集
+Route::patch('/mypage/{user_id}' , 'ProfileController@update')->name('profile.update');  //マイページ更新
 
-// Route::getmiddleware('auth')->group(function () {
-//     Route::view('mypage', 'mypage')->name('mypage');
-// });
+Route::get('/room/{room_id}' , 'ChatController@show')->name('chatroom.show');  //チャットルーム表示
+Route::post('/room/{room_id}' , 'ChatController@store')->name('chat.store');  //チャット投稿、保存
+
+

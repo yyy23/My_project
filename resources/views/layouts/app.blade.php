@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'My_project') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -40,16 +40,17 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
+                            <li class="nav-item"> <!--ログインのリンク -->
                                 <a class="nav-link" href="{{ route('login') }}">ログイン</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
+                                <li class="nav-item"><!--新規登録のリンク -->
                                     <a class="nav-link" href="{{ route('register') }}">新規登録</a>
                                 </li>
                             @endif
                         @else
                             <div class="nav-item dropdown"> <!-- 編集するときは<li>に変更 -->
+
                                 <!-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a> -->
@@ -66,8 +67,12 @@
                                     </form>
                                 </li>
                                 <li>
-                                    <a href= "{{ route('mypage' , auth()->user()->id) }}">
-                                    Mypage</a>
+                                    <!-- homeへのリンク  -->
+                                    <a href="{{ url('/home') }}">Home</a>
+                                </li>    
+                                <li>
+                                    <!-- ログイン中のユーザIDを渡してマイページへのリンク  -->
+                                    <a href= "{{ route('mypage.show' , \Auth::user()->id) }}">My page</a>
                                 </li>    
                             </div>       
                         @endguest

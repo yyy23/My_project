@@ -13,15 +13,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <p>おかえりなさい、いつもお疲れ様☆ ちょっと一息しましょうよ</p>
+                        <p>おかえりなさい、いつもお疲れ様☆</p>
                         <hr>
-                        <p>どこのお部屋でお話しする？</p>
+                        <p>どこの部屋でお話しする？</p>
   
+                        <!--  各チャットルームへのリンク -->
                         <ul>    
-                            <li><a href=" ">０歳児のお部屋</a></li>
-                            <li><a href=" ">１歳児のお部屋</a></li>
-                            <li><a href=" ">２〜３歳児のお部屋</a></li>
-                            <li><a href=" ">４〜６歳児のお部屋</a></li>
+                            <li><a href= "{{ route('chatroom.show' , ["room_id" =>"1"] ) }}">０歳児のお部屋</a></li>
+                            <li><a href= "{{ route('chatroom.show' , ["room_id" =>"2"] ) }}">１歳児のお部屋</a></li>
+                            <li><a href= "{{ route('chatroom.show' , ["room_id" =>"3"] ) }}">２〜３歳児のお部屋</a></li>
+                            <li><a href= "{{ route('chatroom.show' , ["room_id" =>"4"] ) }}">４〜６歳児のお部屋</a></li>
                         </ul>    
                 </div>
             </div>
