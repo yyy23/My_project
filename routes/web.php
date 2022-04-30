@@ -27,5 +27,6 @@ Route::put('/mypage/{user_id}' , 'ProfileController@update')->name('profile.upda
 
 Route::get('/room/{room_id}' , 'ChatController@show')->name('chatroom.show');  //チャットルーム表示
 Route::post('/room/{room_id}' , 'ChatController@store')->name('chat.store');  //チャット投稿、保存
+Route::delete('/room/{room_id}', "ChatController@destroy") ->name("chat.destroy");  //チャット削除
 
 

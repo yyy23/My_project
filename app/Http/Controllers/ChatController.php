@@ -62,6 +62,20 @@ class ChatController extends Controller
     }
 
 
+      /*  チャットの削除  */
+
+    public function destroy($chat_id)         //$chat_idを呼び出して削除処理
+    {
+            $chat = Chat::findOrFail($chatt_id);    // DELETE * FROM chats where id 
+            $chat ->delete();                       //コメント削除
+        
+
+        //post_idを渡して詳細ページへリダイレクト
+        return redirect() ->route('chatroom.show' , [$chat['room_id']] );
+  
+    }
+
+
 
 
 }

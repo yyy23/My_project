@@ -32,9 +32,19 @@
                     <hr>
                         @if (count($chats) > 0)   <!-- $chatsがある場合、foreachで投稿数分を表示 -->
                             @foreach ($chats as $chat)   
-                                <a href ="{{ route(mypage.show , \Auth::user()->id) }}"><p>{{ $chat ->user->name }}さん</p> <!--  チャットのユーザ名  -->
+                                <p>{{ $chat ->user->name }}さん</p> <!--  チャットのユーザ名  -->
                                 <p><h2>{{ $chat ->content }}</h2></p> <!--  チャットの内容  --> 
-                            <hr>
+
+                    <!-- チャット削除ボタン  -->
+                                @if(Auth::user()->id === $chat->user_id) <!-- 認証ユーザIDとチャット投稿ユーザIDが一致したら削除ボタン表示 -->
+                                <form action= "{{ route('chat.destroy' , $chat->id) }}" method="POST">  
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="id" value= "{{$chat ->id}}"> <!-- {chat_id}を隠して詳細画面に渡す -->
+                                    <input type= "submit" name= "chat_delete" value= "削除">
+                                </form>
+                                @endif  
+                                <hr>
                             @endforeach
                         @endif                   
                 </div>
