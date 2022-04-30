@@ -23,7 +23,7 @@ class ProfileController extends Controller
     public function show($user_id)
     {
 
-        $user = Auth::user();  //Userモデルから$user_idを見つける
+        $user_id = Auth::id();  //ログインしているユーザID取得
         
         //ログインしているユーザidと表示する$user_idが異なる場合、'/home'へリダイレクト
         If(auth()->user()->id != $user_id){
@@ -77,21 +77,22 @@ class ProfileController extends Controller
             'introduction.required'   => '自己紹介は必須です'        
             
         ]);
-        
-
-        $profile = Profile::find($user_id); //profoleからuser_idが一致するデータ取得
+                
 
         //ログインしているユーザidと表示する$user_idが異なる場合、'home'へリダイレクト
         If(auth()->user()->id != $user_id){
 
             return redirect()->route('home');
         }
+      
+        $profile = Profile::find($user_id); //profoleからuser_idが一致するデータ取得
 
+        
 
-        //画像ファイルのパスをstrage\app\public\imgに保存
+       
+        //画像ファイルのパスをstrage\app\publicに保存
         $avater_url = $request ->avater_url ->store('img', 'public');
 
-      
             
             $profile ->user_id      = $request ->user()->id;
             $profile ->gender       = $request ->gender;

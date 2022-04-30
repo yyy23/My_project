@@ -1,0 +1,19 @@
+body {
+  background-color: #E6FFE9
+}
+
+.nav-item dropdown {
+  font-size: 9px;
+  color: #0000AA;
+}
+
+.mypage-header {
+  font-size: 12px;
+  color: black;
+}
+
+.mypage-header avater {
+  
+  border-radius: 50%;
+  position: center;
+}

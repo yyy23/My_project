@@ -33,18 +33,16 @@
                     @endif  
 
                 <!-- プロフィール編集内容 -->
-                    <div class="form-group"> 
+                    <div class="mypage-header"> 
                         
                 <!-- プロフィール画像表示 -->    
-                <div>
-                
-                    @if ($profile ->avater_url == null)  <!--画像が空であればデフォルト画像,空でなければファイル画像表示 -->  <!--画像が空でなければ表示、空であればデフォルト画像を表示 -->
-                        <img src="{{ \Storage::url('storage/img/no_image.png') }}">   
-                    @else
-                        <img src="{{ \Storage::url($profile->avater_url) }}" width="15%" height="15%">  <!--public下のstorage/にある画像ファイルにアクセス-->
-                    @endif
-                    
-                    </div>   
+                        <div class="avater"> 
+                        @if ($profile ->avater_url == null)  <!--画像が空であればデフォルト画像,空でなければファイル画像表示 -->  
+                            <img src="{{ \Storage::url('storage/img/no_image.png') }}">   
+                        @else
+                            <img src="{{ \Storage::url($profile->avater_url) }}" width="15%" height="15%";>
+                        @endif
+                        </div>   
                      
                 <!-- 画像ファイル入力 -->
                         <label for= 'avater'>プロフィール画像：</label>
@@ -57,7 +55,7 @@
 
                 <!-- 自己紹介文 -->
                         <label for= 'introduction'>自己紹介：</label>    
-                             <textarea name= 'introduction'  cols= '40' rows= '10' placeholder='自己紹介を入力してください'>{{ old('introduction') ?? $profile ->introduction  }}</textarea><br>
+                             <textarea name= 'introduction'  cols= '40' rows= '10' placeholder='自己紹介を入力してください'>{{ old('introduction') ?? $profile ->introduction  }}</textarea><br> <!--前回入力値を表示-->
                     
                 <!-- 更新ボタン --> 
                         <input type='submit' name= 'update' value='更新する'>        

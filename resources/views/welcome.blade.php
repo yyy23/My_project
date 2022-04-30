@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-        
+        <link href="{{ asset('css/forum.css') }}" rel="stylesheet">
     </head>
     <body>
         <div class="login_register">

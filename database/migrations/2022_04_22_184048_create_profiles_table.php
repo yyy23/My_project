@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->integer('user_id');
             $table->string('gender');
             $table->text('introduction');
-            $table->blob('avater_url')->default('/storage/img/no_image.png');
+            $table->blob('avater_url')->nullable()->comment('プロフィール画像');
             $table->timestamps();
         });
     }

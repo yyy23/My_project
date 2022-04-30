@@ -35,8 +35,9 @@
                     <hr>
                         @if (count($chats) > 0)   <!-- $chatsがある場合、foreachで投稿数分を表示 -->
                             @foreach ($chats as $chat)   
-                            <p>{{ $chat ->user_id }}さん</p> <!--  チャットのユーザ名  -->
-                            <p><h2>{{ $chat ->content }}</h2></p> <!--  チャットの内容  --> 
+                                <p>{{ $chat ->user->name }}さん</p> <!--  チャットのユーザ名  -->
+                                <p><h2>{{ $chat ->content }}</h2></p> <!--  チャットの内容  --> 
+                            <hr>
                             @endforeach
                         @endif                   
                 </div>

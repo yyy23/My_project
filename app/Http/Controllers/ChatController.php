@@ -28,7 +28,7 @@ class ChatController extends Controller
     public function show($room_id)  
     {
 
-        $user_id = auth()->id(); //現在認証しているユーザID取得
+        $user_id = Auth::id();  //ログインしているユーザID取得
 
         If(auth()->user()->id != $user_id){//ログインしているユーザidと表示するuser_idが異なる場合、'home'へリダイレクト
 
@@ -38,7 +38,7 @@ class ChatController extends Controller
         $room = Room::where('id', $room_id) ->first();  //roomのidとroom_idが一致するレコードの最初の結果を取得
 
         $chats = Room::find($room_id) ->chats() ->orderby('id' , 'asc') ->get();  //RoomからユーザIDで取得し、チャットデータをID昇順で取得
-
+        
         return view('chatroom',  ['room' => $room , 'chats' =>$chats] ); 
     }
 

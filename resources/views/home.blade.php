@@ -5,6 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="home_guide">
+               <link rel ="stylesheet" type="text/css" href="css/home.css">
+
                 <div class="guide-header"></div>
 
                 <div class="guide-body">

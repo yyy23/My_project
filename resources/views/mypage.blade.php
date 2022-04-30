@@ -15,16 +15,16 @@
                 </div>
 
                 <div class="mypage-header">
-                <!--アバター画像を表示-->        
                 
-                    <div>
-                    @if ($profile ->avater_url == null)  <!--画像が空であればデフォルト画像,空でなければファイル画像表示 -->  <!--画像が空でなければ表示、空であればデフォルト画像を表示 -->
+                <!--アバター画像を表示-->                        
+                    <div class="avater"> 
+                    @if ($profile ->avater_url == null)  <!--画像が空であればデフォルト画像,空でなければファイル画像表示 --> 
                         <img src="{{ \Storage::url('storage/img/no_image.png') }}">   
                     @else
-                        <img src="{{ \Storage::url($profile->avater_url) }}" width="15%" height="15%">  <!--public下のstorage/にある画像ファイルにアクセス-->
+                        <img src="{{ \Storage::url($profile->avater_url) }}" width="15%" height="15%";> 
                     @endif
                     </div>  
-
+                    
                 <!-- 認証ユーザ名を表示  -->
                     <h1>{{ auth()->user()->name }}さん</h1>
                     
@@ -35,7 +35,7 @@
 
                 <!--  マイページ表示内容  -->  
                 <div class="mypage-body">    <!--old関数で前回入力値を表示、入力がなけれ’未入力’と表示-->
-                    <p>性別：{{ old('gender')  ?? $profile->gender }}</p>  
+                    <p>性別：{{ old('gender') ?? $profile->gender }}</p>  
                     <p>自己紹介：{{ old('introduction') ?? $profile->introduction }}</p>
                 </div>
             </div>
