@@ -26,7 +26,7 @@ class Profile extends Model
         "user_id",
         "gender",
         "introduction",
-        "avater_url",
+        // "avater_url",
     
     ];
 

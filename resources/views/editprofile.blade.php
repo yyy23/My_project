@@ -19,9 +19,9 @@
                 </div>    
                 <hr>
 
-                <form action= "{{ route('profile.update' , \Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
+                <form action= "{{ route('profile.update' , \Auth::user()->id) }}" method="POST" >
                     {{ csrf_field() }}
-                    @method('PATCH')
+                    @method('PUT')
 
                 <!-- エラー文の表示 -->
                     @if(count($errors) > 0)
@@ -34,19 +34,24 @@
 
                 <!-- プロフィール編集内容 -->
                     <div class="mypage-header"> 
-                        
+
+                   <?php
+                   /*  
                 <!-- プロフィール画像表示 -->    
                         <div class="avater"> 
                         @if ($profile ->avater_url == null)  <!--画像が空であればデフォルト画像,空でなければファイル画像表示 -->  
-                            <img src="{{ \Storage::url('storage/img/no_image.png') }}">   
+                            <img src="{{ \Storage::url('storage/img/AYuT7Pg2QjkkIBYbWPUQpiyoLDu0GbiTbKvIbNkb.png') }}">   
                         @else
                             <img src="{{ \Storage::url($profile->avater_url) }}" width="15%" height="15%";>
                         @endif
-                        </div>   
+                        </div>  
+                        
+?> 
                      
                 <!-- 画像ファイル入力 -->
                         <label for= 'avater'>プロフィール画像：</label>
-                            <input type= "file" name= "avater_url" accept="image/png, image/jpg,image/jpeg"><br>
+                            <input type= "file" id="avater" name= "avater_url" accept="image/png, image/jpg,image/jpeg"><br>
+                    */ ?>
 
                 <!-- 性別 -->
                         <label for= 'gender'> 性別：</label>
@@ -54,8 +59,8 @@
                             <input type= 'radio' name= 'gender' value= '男性' {{ old('gender') == '男性' ? 'checked': ''}}>男性</label><br>  <!--性別が男性なら２を返す-->
 
                 <!-- 自己紹介文 -->
-                        <label for= 'introduction'>自己紹介：</label>    
-                             <textarea name= 'introduction'  cols= '40' rows= '10' placeholder='自己紹介を入力してください'>{{ old('introduction') ?? $profile ->introduction  }}</textarea><br> <!--前回入力値を表示-->
+                        <label for= 'introduction'>自己紹介：</label>     <!--登録内容があれば表示、なければ前回入力値または空表示-->
+                             <textarea name= 'introduction'  cols= '40' rows= '10' placeholder='自己紹介を入力してください'>{{ $profile ->introduction ?? old('introduction')  ?? ''  }}</textarea><br>
                     
                 <!-- 更新ボタン --> 
                         <input type='submit' name= 'update' value='更新する'>        

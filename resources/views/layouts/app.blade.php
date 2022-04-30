@@ -68,6 +68,7 @@
                                 <li>
                                     <!-- ログイン中のユーザIDを渡してマイページへのリンク  -->
                                     <a href= "{{ route('mypage.show' , \Auth::user()->id) }}">My page</a>
+                                    
                                 </li>    
                             </div>       
                         @endguest

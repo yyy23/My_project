@@ -17,15 +17,12 @@
 
                     <!-- チャットルーム画像表示  -->
                     <div>
-                        @if ($room ->image_url !=='')
-                            <img src="{{ ($room ->image_url) }}" width="30%">
-                        @else
-                            <img src="{{ ('rooms/no_image.png') }}">
-                        @endif
+                        <img src="{{ ($room ->image_url) }}" width="30%">
+                        <p>{{ $room ->explanation}}</p>  <!--  チャットルームの説明  -->
                     </div>    
-                    <p>説明：{{ $room ->explanation}}</p>  <!--  チャットルームの説明  -->
-
+                    <!--投稿フォーム-->
                     <form action= "{{ route('chat.store' , \Auth::user()->id) }}" method="POST">
+                        <input type="hidden" name="room_id" value="{{$room ->id}}">
                         {{ csrf_field() }}
                         <label for= 'content'>投稿：</label>
                             <textarea name= 'content'  cols= '30' rows= '2'> </textarea><br>
@@ -35,7 +32,7 @@
                     <hr>
                         @if (count($chats) > 0)   <!-- $chatsがある場合、foreachで投稿数分を表示 -->
                             @foreach ($chats as $chat)   
-                                <p>{{ $chat ->user->name }}さん</p> <!--  チャットのユーザ名  -->
+                                <a href ="{{ route(mypage.show , \Auth::user()->id) }}"><p>{{ $chat ->user->name }}さん</p> <!--  チャットのユーザ名  -->
                                 <p><h2>{{ $chat ->content }}</h2></p> <!--  チャットの内容  --> 
                             <hr>
                             @endforeach

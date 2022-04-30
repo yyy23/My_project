@@ -38,7 +38,7 @@ class ChatController extends Controller
         $room = Room::where('id', $room_id) ->first();  //roomのidとroom_idが一致するレコードの最初の結果を取得
 
         $chats = Room::find($room_id) ->chats() ->orderby('id' , 'asc') ->get();  //RoomからユーザIDで取得し、チャットデータをID昇順で取得
-        
+        // dd($chats);
         return view('chatroom',  ['room' => $room , 'chats' =>$chats] ); 
     }
 
@@ -49,13 +49,12 @@ class ChatController extends Controller
     {
 
         $savedata = [  //DBへの保存内容
-            "id" => $request -> id,
+           
             "room_id" => $request -> room_id,
             "user_id" => $request -> user()->id,
             "content" => $request -> content,   
-
           ];
-  
+          
           $chat = new Chat;    //新規投稿
           $chat ->fill($savedata) ->save();  //内容を保存
         
